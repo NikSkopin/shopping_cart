@@ -1,28 +1,50 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div class="container">
+      <div class="cartlist">
+        <CartList/>
+      </div>
+      <div class="productlist">
+        <ProductList/>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import CartList from "./components/cart/CartList.vue";
+import ProductList from "./components/product/ProductList.vue";
 
 export default {
-  name: 'app',
+  name: "app",
   components: {
-    HelloWorld
+    CartList,
+    ProductList
   }
-}
+};
 </script>
 
 <style>
+html,
+body {
+  background: #f2f6fa;
+}
+
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  height: 100%;
+}
+.container {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cartlist {
+  flex: 1;
+}
+.productlist {
+  flex: 2;
 }
 </style>
