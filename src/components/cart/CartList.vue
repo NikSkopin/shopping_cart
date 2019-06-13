@@ -76,8 +76,6 @@ ul {
   margin: 0;
 }
 
-.cart-item--arrows {
-}
 .cart-item--content {
   padding: 10px 0;
 
