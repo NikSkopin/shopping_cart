@@ -4,41 +4,38 @@
       <i class="fa fa-2x fa-shopping-cart"></i>
     </div>
     <ul>
-      <li class="cart-item">
-        <div class="cart-item--container">
-          <div class="cart-item--title">
-            <p>The First Item</p>
-            <div class="cart-item--arrows">
-              <i class="fa fa-arrow-circle-up"></i>
-              <i class="fa fa-arrow-circle-down"></i>
-            </div>
-          </div>
-          <div class="cart-item--content">
-            <span class="cart-item--price">19.99$ each</span>
-            <span class="cart-item--quantity">Quantity: 2</span>
-          </div>
-        </div>
+      <li v-for="cartItem in cartItems" :key="cartItem.id" class="cart-item">
+        <CartListItem :cartItem="cartItem"/>
       </li>
       <div class="cart-details">
         <p>
           Total Quantity:
-          <span class>2</span>
+          <span>{{ cartQuantity }}</span>
         </p>
-        <p class>
+        <p>
           <i class="fa fa-trash"></i>Remove all
         </p>
       </div>
     </ul>
     <button class="button">
       Checkout (
-      <span class>$</span>)
+      <span class>$ {{ cartTotal }}</span>)
     </button>
   </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+import CartListItem from "./CarListItem";
+
 export default {
-  name: "CartList"
+  name: "CartList",
+  computed: {
+    ...mapGetters(["cartItems", "cartTotal", "cartQuantity"])
+  },
+  components: {
+    CartListItem
+  }
 };
 </script>
 
@@ -60,27 +57,6 @@ export default {
 ul {
   list-style: none;
   padding: 0;
-}
-
-.cart-item--container {
-  display: flex;
-  flex-flow: column;
-}
-.cart-item--title {
-  padding: 10px 0;
-  display: flex;
-  justify-content: space-between;
-}
-.cart-item--title p {
-  padding: 0;
-  margin: 0;
-}
-
-.cart-item--content {
-  padding: 10px 0;
-
-  display: flex;
-  justify-content: space-between;
 }
 
 .cart-details {
