@@ -1,21 +1,47 @@
 const state = {
-  cartItems: [
-    {
-      id: 2,
-      title: 'The Second Item',
-      description:
-        'Lorem ipsum dolor sit, amet consectetur adipisicing elit.Exercitationem quaerat enim nemo corrupti inventore eos.',
-      price: 15.99,
-      quantity: 2
-    }
-  ]
+  cartItems: []
 };
 const mutations = {
-  UPDATE_CART_ITEMS(state, payload) {
-    state.cartItems = payload;
+  ADD_CART_ITEM(state, payload) {
+    let cartProductExists = false;
+    state.cartItems.map(cartItem => {
+      if (cartItem.id === payload.id) {
+        cartItem.quantity++;
+        cartProductExists = true;
+      }
+    });
+    if (!cartProductExists) {
+      state.cartItems.push(payload);
+    }
+  },
+  REMOVE_CART_ITEM(state, payload) {
+    state.cartItems.map(cartItem => {
+      if (cartItem.id === payload.id && cartItem.quantity > 1) {
+        cartItem.quantity--;
+      } else if (cartItem.id === payload.id && cartItem.quantity === 1) {
+        const cartItemToRemove = state.cartItems.findIndex(
+          cartItem => cartItem.id === payload.id
+        );
+        state.cartItems.splice(cartItemToRemove, 1);
+      }
+    });
+  },
+  REMOVE_ALL(state) {
+    let emptyCart = [];
+    state.cartItems = emptyCart;
   }
 };
-const actions = {};
+const actions = {
+  addCartItem(context, payload) {
+    context.commit('ADD_CART_ITEM', payload);
+  },
+  removeCartItem(context, payload) {
+    context.commit('REMOVE_CART_ITEM', payload);
+  },
+  removeAll(context) {
+    context.commit('REMOVE_ALL');
+  }
+};
 const getters = {
   cartItems: state => state.cartItems,
   cartTotal: state => {

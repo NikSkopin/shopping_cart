@@ -32,6 +32,7 @@ body {
 
 #app {
   height: 100%;
+  font-family: Ubuntu, serif;
 }
 .container {
   width: 80%;

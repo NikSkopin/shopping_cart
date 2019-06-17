@@ -5,28 +5,32 @@ const state = {
       title: 'The First Item',
       description:
         'Lorem ipsum dolor sit, amet consectetur adipisicing elit.Exercitationem quaerat enim nemo corrupti inventore eos.',
-      price: 19.99
+      price: 19.99,
+      quantity: 1
     },
     {
       id: 2,
       title: 'The Second Item',
       description:
         'Lorem ipsum dolor sit, amet consectetur adipisicing elit.Exercitationem quaerat enim nemo corrupti inventore eos.',
-      price: 15.99
+      price: 15.99,
+      quantity: 1
     },
     {
       id: 3,
       title: 'The Third Item',
       description:
         'Lorem ipsum dolor sit, amet consectetur adipisicing elit.Exercitationem quaerat enim nemo corrupti inventore eos.',
-      price: 15.99
+      price: 15.99,
+      quantity: 1
     },
     {
       id: 4,
       title: 'The Fourth Item',
       description:
         'Lorem ipsum dolor sit, amet consectetur adipisicing elit.Exercitationem quaerat enim nemo corrupti inventore eos.',
-      price: 49.99
+      price: 49.99,
+      quantity: 1
     }
   ]
 };
